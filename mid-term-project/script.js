@@ -157,7 +157,6 @@ const levels = [
         consequences:{},
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGVBPG4Rv8LcCJD5DT0xtes0Ik7zCBWVjuEilA-BudPg&s",
         endText:"You have escaped Prison. Game Ended",
-        addendum:"The Game loop was the most difficult thing I have faced during the game. I had to make it dynamic and not static.\n The game had to change according to the levels object I have.\n Deciding on the strucutre of the object was also an important thing. \n I had to match the consequences with the choices for the next level.\n I was able to do it using optional parameters for the object which is just normal parameters with nullable value in Javascript.\n The Theme was also inspired from Prison Break. The Challenge there was to stop the game from taking any input when it has finished. This was also done using optional parameters.\n Mapping choices to consequences was also challenging and I used a Dictionary to map the level value and the choice string"
 
     }
 
