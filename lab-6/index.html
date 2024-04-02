@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prison Escape Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Prison Escape Game</h1>
+      <div id="story"></div>
+      <div id="choices"></div>
+      <div id="image-container">
+        <img id="level-image" src="" alt="Level Image" />
+      </div>
+      <div id="endText"></div>
+    </div>
+    <div id="addendum" style="margin-top: 200px"></div>
+    <script src="script.js"></script>
+    <footer>
+      <p><b>Addendum:</b>"The Game loop was the most difficult thing I have faced during the game. I had to make it dynamic and not static.\n The game had to change according to the levels object I have.\n Deciding on the strucutre of the object was also an important thing. \n I had to match the consequences with the choices for the next level.\n I was able to do it using optional parameters for the object which is just normal parameters with nullable value in Javascript.\n The Theme was also inspired from Prison Break. The Challenge there was to stop the game from taking any input when it has finished. This was also done using optional parameters.\n Mapping choices to consequences was also challenging and I used a Dictionary to map the level value and the choice string"
+      </p>
+      <p>Last updated: 
+          <span id="lastModified"></span>
+      </p>
+  </footer>
+  <script type="text/javascript">
+       var x = document.lastModified;
+       document.getElementById('lastModified').textContent = x;
+  </script>
+  </body>
+</html>

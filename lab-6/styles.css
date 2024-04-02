@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: yellow;
+  }
+  
+  .container {
+    margin-top: 50px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  #image-container {
+    margin-top: 20px;
+  }
+  
+  #level-image {
+    max-width: 100%;
+    height: auto;
+  }
+  footer {
+    background-color: #fff;
+    color: black;
+  }
+  
