@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unscramble the Word</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 650px auto 200px;
+            grid-template-rows: auto 400px auto;
+            grid-template-areas:
+                "header header header"
+                "sidebar main ads"
+                "footer footer footer";
+            min-height: 100vh;
+        }
+
+        header {
+            grid-area: header;
+            background-color: #007bff;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            grid-area: sidebar;
+            background-color: #0056b3;
+            color: #fff;
+            padding: 1rem;
+            width: 200px;
+        }
+
+        main {
+            grid-area: main;
+            /* background-color: #fff; */
+            padding: 1rem;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #007bff;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .ads {
+            grid-area: ads;
+            /* background-color: #fff; */
+            padding: 1rem;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 style="margin: 0">Unscramble the Word</h1>
+        </header>
+        <nav>
+            <h2>Menu Side-Bar</h2>
+            <ul>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none">Home</a>
+                </li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none">Instructions</a>
+                </li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none">About</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <h2>Unscramble the Word</h2>
+            <div id="word-to-unscramble" style="margin-bottom: 1rem"></div>
+            <div id="user-input">
+                <input type="text" id="user-word" placeholder="Enter your guess" />
+                <button id="submit-button">Submit</button>
+            </div>
+            <div id="result" style="margin-top: 1rem"></div>
+        </main>
+        <div class="ads">
+            <a href="https://www.amazon.com/Apple-2024-MacBook-13-inch-Laptop/dp/B0CX3M5MSG/ref=sr_1_5?dib=eyJ2IjoiMSJ9.QpfqGGHIP1VGnhajokPhKLhE_lcQlmpWeptHjb-tlpR3bUGHfVbewx_hk-kqXu0Pa0E_bkty735IkHXfPJDrgrkpAgavK0bOeyswtiOIyc8tWCgdF4lrHk5x1bXeLwC-YqUgPSZ2SCwlfKboHV0uztVtav4xlPDLLRJN-z0q7jdwnrMgTvC5aMIWeNwC4pmNupSEF6EylmvgLjWnBEtR2Dd7JeYxjJds9r9a7v_mPOQ.sB8fOvPlRd1ar8U1dl6QGOQweZ6iSZvVSBAfdNG5Z5Y&dib_tag=se&keywords=laptop+macbook&qid=1712009330&sr=8-5"
+                target="_blank">
+                <img src="Macbook.jpg" alt="Product Advertisement" />
+            </a>
+        </div>
+        <footer>
+            <h3>Addendum:</h3>
+            <p>
+                Welcome to "Unscramble the Word"! In this game, your objective is to decipher a word by rearranging its
+                scrambled letters to form the correct word. Your challenge is to guess the correct word from the jumbled
+                letters provided. Get ready to exercise your word-solving skills and enjoy the excitement of
+                unscrambling words in this engaging game!
+            </p>
+            <h3>Difficulties Encountered and Solution:</h3>
+            <p>Difficulties and Solution: The difficulties I encountered were while ensuring that user input was
+                case-insensitive and free of unnecessary whitespace posed a challenge. This was addressed by converting
+                the input to lowercase and utilizing the trim() method to eliminate leading and trailing whitespace,
+                ensuring accurate comparison. Additionally, distinguishing between correct and incorrect guesses
+                visually required careful handling. This was achieved by dynamically updating the message content and
+                color based on the accuracy of the user's guess.</p>
+            <p style="margin: 0; color: white; background-color: #0a7bf3">
+                Last updated: <span id="lastModified"></span>
+            </p>
+        </footer>
+    </div>
+    <script>
+        const words = [
+            "apple",
+            "banana",
+            "orange",
+            "grape",
+            "melon",
+            "strawberry",
+            "kiwi",
+            "peach",
+            "plum",
+            "pear",
+        ];
+
+        const randomIndex = Math.floor(Math.random() * words.length);
+        const wordToUnscramble = words[randomIndex];
+        const scrambledWord = scrambleWord(wordToUnscramble);
+
+        document.getElementById("word-to-unscramble").textContent = scrambledWord;
+
+        function scrambleWord(word) {
+            return word
+                .split("")
+                .sort(() => Math.random() - 0.5)
+                .join("");
+        }
+
+        document
+            .getElementById("submit-button")
+            .addEventListener("click", function () {
+                const userInput = document
+                    .getElementById("user-word")
+                    .value.trim()
+                    .toLowerCase();
+                const resultDiv = document.getElementById("result");
+                if (userInput === wordToUnscramble) {
+                    resultDiv.textContent = "Correct! You unscrambled the word.";
+                    resultDiv.style.color = "green";
+                } else {
+                    resultDiv.textContent = "Incorrect! Try again.";
+                    resultDiv.style.color = "red";
+                }
+            });
+
+        var x = document.lastModified;
+        document.getElementById("lastModified").textContent = x;
+    </script>
+</body>
+
+</html>
