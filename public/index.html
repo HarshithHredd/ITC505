@@ -1,0 +1,69 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mad Lib Game</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Mad Lib Game</h1>
+            <div class="content">
+                <img src="./Madlib.jpg" alt="Mad Lib Image" class="mad-lib-image">
+                <form action="/submit" method="POST">
+                    <label for="adjective">Adjective:</label>
+                    <input type="text" id="adjective" name="adjective" required>
+                
+                    <label for="noun1">Noun :</label>
+                    <input type="text" id="noun" name="noun" required>
+                
+                    <label for="verb">Verb:</label>
+                    <input type="text" id="verb" name="verb" required>
+                
+                    <label for="place">Place:</label>
+                    <input type="text" id="place" name="place" required>
+                
+                    <label for="animal">Animal (plural):</label>
+                    <input type="text" id="animal" name="animal" required>
+                
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+        <footer>
+          
+
+            <div class="addendum">
+                <center><h2>Addendum</h2></center>
+                <p>In the provided code, several enhancements and additions were made to improve functionality, security, and maintainability:</p>
+                <ol>
+                    <li>
+                        <strong>Error Handling Middleware:</strong> Implemented middleware to catch and log errors, ensuring that unexpected errors are properly captured and logged for debugging purposes. This middleware intercepts errors thrown during the request-response cycle and sends them to the appropriate error handling mechanism.
+                    </li>
+                    <li>
+                        <strong>Input Validation Middleware:</strong> Added input validation middleware to ensure that all required fields are filled in the form submission. If any field is missing, a 400 status code with an appropriate error message is returned. This helps prevent malformed or incomplete data from being processed by the server.
+                    </li>
+                    <li>
+                        <strong>Security Headers Middleware:</strong> Applied security headers middleware to enhance the security of the web application. These headers help prevent common security vulnerabilities such as XSS (Cross-Site Scripting), content sniffing, and clickjacking. By setting strict security headers, we reduce the risk of various types of attacks.
+                    </li>
+                    <li>
+                        <strong>Logging Configuration:</strong> Configured logging using the Winston library, which allows logging messages to the console and separate log files based on log levels. This helps in better log management and tracking, enabling developers to monitor application behavior and diagnose issues more effectively.
+                    </li>
+                    <li>
+                        <strong>HTTPS Redirection Middleware:</strong> Added middleware to redirect HTTP requests to HTTPS, ensuring that all communication between the client and the server is encrypted for better security. By enforcing HTTPS, we protect sensitive data from being intercepted or tampered with by malicious actors.
+                    </li>
+                </ol>
+                <p>These enhancements contribute to a more robust and secure web application, providing better error handling, input validation, security, logging, and HTTPS support.</p>
+            </div>
+            <p>Last updated: 
+                <span id="lastModified"></span>
+            </p>
+        </footer>
+        <script type="text/javascript">
+            var x = document.lastModified;
+            document.getElementById('lastModified').textContent = x;
+        </script>
+    </body>
+    </html>
